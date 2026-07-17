@@ -73,7 +73,7 @@ Develop an automated deep learning system capable of classifying retinal fundus 
 ---
 
 ## 🔄 Data Preprocessing
-The preprocessing pipeline (implemented in [backend.py](file:///d:/Final%20Impl/backend.py#L223-L246)) includes:
+The preprocessing pipeline (implemented in includes:
 1. Extract green channel from RGB image
 2. Gaussian blur correction
 3. Normalization
@@ -182,8 +182,85 @@ Retinopathy-Diabetic-Project/
 │       ├── package.json
 │       ├── vite.config.js
 │       └── index.html
-└── README.md                   # This file!
+└── README.md               
 ```
+
+---
+
+# 📊 Results
+
+The proposed diabetic retinopathy classification system was evaluated on the EyePACS dataset using transfer learning and an SVM classifier. The model achieved strong performance on the training and validation sets while maintaining good generalization on the unseen test set.
+
+## 📈 Overall Performance
+
+| Metric | Value |
+|---------|-------|
+| **Train Accuracy** | **96.48%** |
+| **Validation Accuracy** | **92.88%** |
+| **Test Accuracy** | **78.22%** |
+| **Best SVM Parameters** | **C = 15, γ = 0.005** |
+
+> The optimal hyperparameters were obtained through hyperparameter tuning, resulting in the best classification performance on the validation set.
+
+---
+
+## 📑 Validation Classification Report
+
+| Class | Precision | Recall | F1-Score |
+|-------|----------:|--------:|---------:|
+| No DR | 0.82 | 0.91 | 0.86 |
+| Mild | 0.92 | 0.85 | 0.89 |
+| Moderate | 0.92 | 0.89 | 0.91 |
+| Severe | 1.00 | 1.00 | 1.00 |
+| Proliferative | 1.00 | 0.99 | 1.00 |
+
+**Overall Validation Accuracy:** **92.88%**
+
+### Validation Report
+
+<p align="center">
+<img width="555" height="326" alt="image" src="https://github.com/user-attachments/assets/ca4954dd-cdee-4800-b4ad-c9c2a070b119" />
+</p>
+
+---
+
+## 📑 Test Classification Report
+
+| Class | Precision | Recall | F1-Score |
+|-------|----------:|--------:|---------:|
+| No DR | 0.87 | 0.86 | 0.87 |
+| Mild | 0.33 | 0.32 | 0.33 |
+| Moderate | 0.57 | 0.68 | 0.62 |
+| Severe | 0.97 | 0.49 | 0.66 |
+| Proliferative | 0.94 | 0.64 | 0.76 |
+
+**Overall Test Accuracy:** **78.22%**
+
+### Test Report
+
+<p align="center">
+<img width="541" height="318" alt="image" src="https://github.com/user-attachments/assets/871deae6-5044-409f-9c16-8986418f32b0" />
+</p>
+
+---
+
+## 🔍 Confusion Matrix
+
+The normalized confusion matrix illustrates the classification performance for each diabetic retinopathy severity level. Most **No DR** images were classified correctly, while confusion mainly occurred among the intermediate stages (**Mild** and **Moderate**), which exhibit similar retinal characteristics.
+
+<p align="center">
+<img width="688" height="550" alt="image" src="https://github.com/user-attachments/assets/cb543077-de1f-4fdc-875b-99472d366ac3" />
+</p>
+
+---
+
+## 💡 Key Observations
+
+- ✅ Achieved **96.48%** training accuracy and **92.88%** validation accuracy.
+- ✅ Final **test accuracy reached 78.22%** on unseen retinal images.
+- ✅ Excellent classification performance for **No DR** and **Severe** stages.
+- ⚠️ Most misclassifications occurred between **Mild** and **Moderate** classes due to subtle retinal abnormalities.
+- ⚠️ Class imbalance in the EyePACS dataset affected the prediction performance of minority classes.
 
 ---
 
@@ -245,7 +322,36 @@ Frontend will be running at http://localhost:5173
 ---
 
 ## 🚧 Challenges Faced
-TODO: Add challenges faced during development
+
+1. Class Imbalance
+
+The EyePACS dataset was highly imbalanced, with the No DR class containing far more images than the severe diabetic retinopathy classes. This caused the model to become biased toward the majority class, making it difficult to accurately classify minority disease stages. To address this, techniques such as class weighting and data augmentation were explored.
+
+2. Overfitting and Model Generalization
+
+Despite using transfer learning, the model initially achieved better training performance than validation performance, indicating overfitting. Improving generalization required experimenting with preprocessing techniques, data augmentation, regularization, learning rate scheduling, and hyperparameter tuning to achieve more stable validation accuracy.
+
+---
+
+## Screenshots
+
+### Login Page
+<img width="950" alt="Login Page" src="https://github.com/user-attachments/assets/45b3deb1-f91e-41dd-bc25-bc80570bc1fe" />
+
+### Doctor Dashboard
+<img width="959" alt="Doctor Dashboard" src="https://github.com/user-attachments/assets/783d15ef-1a82-4e71-8286-9782bcd1d61a" />
+
+### Retinal Image Upload Page
+<img width="946" alt="Retinal Image Upload Page" src="https://github.com/user-attachments/assets/37935ad2-7cf5-4086-a554-9511f3c4b7cd" />
+
+### Diagnosis Page
+<img width="718" alt="Diagnosis Page" src="https://github.com/user-attachments/assets/196291cf-786f-48f9-b0fb-18f1e331a2c7" />
+
+### User History
+<img width="947" alt="User History" src="https://github.com/user-attachments/assets/86f519c0-dd93-4fd1-8a84-513cc0a9e401" />
+
+### Generated Report
+<img width="294" alt="Generated Report" src="https://github.com/user-attachments/assets/88b69c37-cdcb-44b7-940d-6bfad10457ec" />
 
 ---
 
@@ -269,10 +375,9 @@ TODO: Add challenges faced during development
 
 ---
 
-## 📜 License
-TODO: Add license
-
----
-
 ## 👨‍💻 Author
-TODO: Add author details (GitHub, LinkedIn, Email)
+Name       : Vishal Raman V
+
+GitHub     : https://github.com/Vishalraman-26
+
+Linked In  : https://www.linkedin.com/in/vishal-raman-v-762857300/
